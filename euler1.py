@@ -8,17 +8,20 @@
 # find the sum of the even-valued terms.
 ###################################
 
-def product_finder(factor1, factor2, limit):
-    x = 1
-    product_list = []
-
-    while x <= limit:
-        if x % factor1 == 0 or x % factor2 == 0:
-            product_list.append(x)
+def product_finder_2(factors, limit):
+    products = []
+    x = 0
+    while x < len(factors):
+        counter = 1
+        while counter <= limit:
+            if counter % factors[x] == 0 and counter not in products:
+                products.append(counter)
+            counter += 1
         x += 1
 
-    print('There are', len(product_list), 'products of', factor1, 'and', factor2,
-          'less than or equal to', limit, ':', product_list)
+    products.sort()
+    print('The Products of', factors, 'less than or equal to', limit, 'are:', products)
 
 
-product_finder(13, 237, 10000)
+product_finder_2([1337, 2257, 8000], 10000)
+
